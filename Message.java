@@ -8,6 +8,10 @@ public class Message<T> {
     private MessageType type;
     private T data;
 
+    public Message(User user) {
+        this.user = user;
+    }
+
     public Message(User user, Date date, MessageType type, T data) {
         this.user=user;
         this.date=date;
@@ -45,5 +49,15 @@ public class Message<T> {
 
     public void setData(T data) {
         this.data=data;
+    }
+
+    @Override
+    public String toString() {
+        return "Message{"+
+                "user="+user+
+                ", date="+date+
+                ", type="+type+
+                ", data="+data+
+                '}';
     }
 }

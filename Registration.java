@@ -7,13 +7,14 @@ import java.util.Map;
 public class Registration {
     Map<String, String> user = new HashMap<>();
     Validation validation = new Validation();
-    public void reg(String name, String pass){
-        if((user.containsKey(name)))
+
+    public void reg(User users){
+        if((user.containsKey(users.getName())))
             System.out.println("Такое имя уже существует");
         else {
-            user.put(name, pass);
-            validation.valid(pass);
+            user.put(users.getName(), users.getPassword());
+            validation.valid(users.getPassword());
+            users.setId(users.getId()+user.size());
         }
-
     }
 }
