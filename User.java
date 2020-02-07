@@ -1,12 +1,12 @@
 package message;
 
-import java.io.Serializable;
+import java.io.*;
 import java.util.List;
 
 public class User implements Serializable {
-    private final String name;
-    private final String password;
-    private  long id;
+    private String name;
+    private String password;
+    private long id;
 
     public User(String name, String password, long id) {
         this.name=name;
@@ -37,5 +37,22 @@ public class User implements Serializable {
                 ", password='"+password+'\''+
                 ", id="+id+
                 '}';
+    }
+
+    private void writeObject(ObjectOutputStream out) throws IOException {
+        out.writeObject(name);
+        out.writeLong(id);
+        out.writeObject(password);
+
+    }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        name = (String) in.readObject();
+        id = in.readLong();
+        password = (String) in.readObject();
+
+    }
+    private void readObjectNoData(ObjectInputStream in) throws ObjectStreamException{
+
     }
 }

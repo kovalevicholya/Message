@@ -15,11 +15,11 @@ public class Chat implements Serializable {
 
     private void writeObject(ObjectOutputStream out) throws IOException {
         out.defaultWriteObject();
-        out.writeObject(getSaveUser());
+
     }
     private void readeObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         in.defaultReadObject();
-        in.readObject();
+
 
     }
     private void readeObjectNoData(Object o){}
